@@ -1,0 +1,20 @@
+name: SecretCurse
+version: '1.0'
+main: fr.siglah.secretCurse.SecretCursePlugin
+api-version: '26.2'
+commands:
+  defi:
+    description: "Gère les malédictions secrètes."
+    usage: "/defi [menu|gg|perdu]"
+  defihelp:
+    description: "Affiche l'aide de SecretCurse."
+    usage: "/defihelp"
+  dm:
+    description: "Raccourci pour /defi menu."
+    usage: "/dm"
+  dg:
+    description: "Raccourci pour /defi gg."
+    usage: "/dg"
+  dp:
+    description: "Raccourci pour /defi perdu."
+    usage: "/dp"
