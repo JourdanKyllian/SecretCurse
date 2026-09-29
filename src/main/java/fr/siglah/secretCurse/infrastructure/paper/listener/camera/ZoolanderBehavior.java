@@ -8,6 +8,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.UUID;
 
+/**
+ * Syndrome Zoolander : toute rotation de caméra vers la gauche est annulée
+ * et recadrée sur le yaw précédent.
+ */
 public class ZoolanderBehavior implements CurseBehavior {
     private final UUID targetId;
 

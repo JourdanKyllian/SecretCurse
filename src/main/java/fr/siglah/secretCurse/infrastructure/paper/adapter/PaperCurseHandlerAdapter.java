@@ -4,10 +4,9 @@ import fr.siglah.secretCurse.domain.port.CurseHandlerPort;
 import fr.siglah.secretCurse.domain.CurseType;
 import fr.siglah.secretCurse.infrastructure.paper.listener.CurseBehavior;
 
-// Les imports complets pour toutes les catégories (même celles non créées)
 import fr.siglah.secretCurse.infrastructure.paper.listener.camera.*;
 import fr.siglah.secretCurse.infrastructure.paper.listener.inventory.*;
-import fr.siglah.secretCurse.infrastructure.paper.listener.interaction.*;
+import fr.siglah.secretCurse.infrastructure.paper.listener.mining.*;
 import fr.siglah.secretCurse.infrastructure.paper.listener.environment.*;
 
 import net.kyori.adventure.text.Component;
@@ -40,35 +39,29 @@ public class PaperCurseHandlerAdapter implements CurseHandlerPort {
         // --- Catégorie 1 : Déplacements & Caméra ---
         behaviorRegistry.put(CurseType.ZOOLANDER, ZoolanderBehavior::new);
         behaviorRegistry.put(CurseType.FAKE_LAG, FakeLagBehavior::new);
-        behaviorRegistry.put(CurseType.ANTI_RABBIT, AntiRabbitBehavior::new);
-        behaviorRegistry.put(CurseType.STIFF_NECK, StiffNeckBehavior::new);
-        behaviorRegistry.put(CurseType.COWARDLY_FIGHTER, CowardlyFighterBehavior::new);
-        behaviorRegistry.put(CurseType.PACIFIST_JUMPER, PacifistJumperBehavior::new);
+        behaviorRegistry.put(CurseType.COMPULSIVE_SPRINTER, CompulsiveSprinterBehavior::new);
+        behaviorRegistry.put(CurseType.SAINT_VITUS_DANCE, SaintVitusDanceBehavior::new);
+        behaviorRegistry.put(CurseType.PHANTOM_WEIGHT, PhantomWeightBehavior::new);
+        behaviorRegistry.put(CurseType.SPIDER_IMPRINT, SpiderImprintBehavior::new);
 
         // --- Catégorie 2 : Inventaire & Objets ---
-        behaviorRegistry.put(CurseType.DEPENDENT_LEFTY, DependentLeftyBehavior::new);
-        behaviorRegistry.put(CurseType.HOTBAR_ONLY, HotbarOnlyBehavior::new);
-        behaviorRegistry.put(CurseType.EXCLUSIVITY_CONTRACT, ExclusivityContractBehavior::new);
-        behaviorRegistry.put(CurseType.SLIPPERY_HANDS, SlipperyHandsBehavior::new);
-        behaviorRegistry.put(CurseType.SHATTERING_STACK, ShatteringStackBehavior::new);
-        behaviorRegistry.put(CurseType.CAPRICIOUS_GOURMET, CapriciousGourmetBehavior::new);
+        behaviorRegistry.put(CurseType.DIRTY_HANDS_ALLERGY, DirtyHandsAllergyBehavior::new);
+        behaviorRegistry.put(CurseType.FORCED_VEGETARIAN, ForcedVegetarianBehavior::new);
+        behaviorRegistry.put(CurseType.HOLED_INVENTORY, HoledInventoryBehavior::new);
+        behaviorRegistry.put(CurseType.IRRESISTIBLE_CRAVING, IrresistibleCravingBehavior::new);
+        behaviorRegistry.put(CurseType.FORCED_MINIMALISM, ForcedMinimalismBehavior::new);
 
         // --- Catégorie 3 : Minage & Interactions ---
-        behaviorRegistry.put(CurseType.DIRTY_HANDS, DirtyHandsBehavior::new);
-        behaviorRegistry.put(CurseType.ALTITUDE, AltitudeBehavior::new);
-        behaviorRegistry.put(CurseType.SUPERSTITION, SuperstitionBehavior::new);
-        behaviorRegistry.put(CurseType.SHY_BUILDER, ShyBuilderBehavior::new);
-        behaviorRegistry.put(CurseType.FEARFUL_CRAFTER, FearfulCrafterBehavior::new);
-        behaviorRegistry.put(CurseType.LOOT_GRAVITY, LootGravityBehavior::new);
-        behaviorRegistry.put(CurseType.ORE_KARMA, OreKarmaBehavior::new);
+        behaviorRegistry.put(CurseType.ORE_WHEEL, OreWheelBehavior::new);
+        behaviorRegistry.put(CurseType.INNER_FURNACE, InnerFurnaceBehavior::new);
 
         // --- Catégorie 4 : Environnement & Entités ---
-        behaviorRegistry.put(CurseType.VEGETARIAN, VegetarianBehavior::new);
-        behaviorRegistry.put(CurseType.HYDROPHOBE, HydrophobeBehavior::new);
-        behaviorRegistry.put(CurseType.PRECARIOUS_BALANCE, PrecariousBalanceBehavior::new);
-        behaviorRegistry.put(CurseType.EYE_CONTACT, EyeContactBehavior::new);
+        behaviorRegistry.put(CurseType.CREEPER_SYNDROME, CreeperSyndromeBehavior::new);
+        behaviorRegistry.put(CurseType.WATER_RAGE, WaterRageBehavior::new);
         behaviorRegistry.put(CurseType.VAMPIRE, VampireBehavior::new);
-        behaviorRegistry.put(CurseType.AUDITORY_INSOMNIA, AuditoryInsomniaBehavior::new);
+        behaviorRegistry.put(CurseType.MONSTER_MAGNET, MonsterMagnetBehavior::new);
+        behaviorRegistry.put(CurseType.GLASS_ANKLES, GlassAnklesBehavior::new);
+        behaviorRegistry.put(CurseType.UNSTABLE_LOTTERY, UnstableLotteryBehavior::new);
     }
 
     @Override
@@ -83,7 +76,7 @@ public class PaperCurseHandlerAdapter implements CurseHandlerPort {
             if (player != null) activeBehavior.onStart(player);
 
             Bukkit.getPluginManager().registerEvents(activeBehavior, plugin);
-            plugin.getLogger().info("Malédiction " + type.name() + " ACTIVÉE.");
+            plugin.getLogger().info("Malédiction " + type.getDisplayName() + " ACTIVÉE.");
         }
     }
 
@@ -105,7 +98,8 @@ public class PaperCurseHandlerAdapter implements CurseHandlerPort {
     public void sendPrivateBriefing(UUID hiderId, CurseType type) {
         Player hider = Bukkit.getPlayer(hiderId);
         if (hider != null) {
-            hider.sendMessage(Component.text("🤫 Défi Secret : " + type.name(), NamedTextColor.RED));
+            hider.sendMessage(Component.text("🤫 Défi Secret : " + type.getDisplayName(), NamedTextColor.RED));
+            hider.sendMessage(Component.text(type.getDescription(), NamedTextColor.GRAY));
         }
     }
 
@@ -113,7 +107,7 @@ public class PaperCurseHandlerAdapter implements CurseHandlerPort {
     public void announceSuccess(UUID hiderId, CurseType type) {
         Title title = Title.title(
                 Component.text("DÉFI TROUVÉ !", NamedTextColor.GREEN),
-                Component.text("La malédiction était : " + type.name(), NamedTextColor.YELLOW)
+                Component.text("La malédiction était : " + type.getDisplayName(), NamedTextColor.YELLOW)
         );
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.showTitle(title);
@@ -124,7 +118,7 @@ public class PaperCurseHandlerAdapter implements CurseHandlerPort {
     public void announceFailure(UUID hiderId, CurseType type) {
         Title title = Title.title(
                 Component.text("ÉCHEC DU CHERCHEUR", NamedTextColor.RED),
-                Component.text("Le secret était : " + type.name(), NamedTextColor.GRAY)
+                Component.text("Le secret était : " + type.getDisplayName(), NamedTextColor.GRAY)
         );
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.showTitle(title);

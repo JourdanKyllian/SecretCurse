@@ -8,6 +8,10 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.UUID;
 
+/**
+ * Sang de Vampire : le joueur prend feu à la lumière directe du soleil, en
+ * extérieur, en l'absence de pluie.
+ */
 public class VampireBehavior implements CurseBehavior {
     private final JavaPlugin plugin;
     private final UUID targetId;

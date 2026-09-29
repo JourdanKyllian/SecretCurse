@@ -1,42 +1,114 @@
 package fr.siglah.secretCurse.domain;
 
 /**
- * L'intégralité des 25 défis jouables, répartis dans leurs 4 catégories.
+ * L'intégralité des 19 contraintes jouables en mode "Malédiction Cachée",
+ * réparties dans leurs 4 catégories, telles que définies dans le cahier
+ * des charges définitif.
  */
 public enum CurseType {
 
     // --- Catégorie 1 : Déplacements & Caméra (6) ---
-    ZOOLANDER(CurseCategory.DEPLACEMENT_CAMERA, "Syndrome Zoolander", "Impossible de tourner la caméra vers la gauche."),
-    FAKE_LAG(CurseCategory.DEPLACEMENT_CAMERA, "Faux Lag", "Un décalage artificiel s'invite dans tes mouvements."),
-    ANTI_RABBIT(CurseCategory.DEPLACEMENT_CAMERA, "L'Anti-Lapin", "Sauter t'épuise et t'inflige une lourde lenteur."),
-    STIFF_NECK(CurseCategory.DEPLACEMENT_CAMERA, "Syndrome du Torticolis", "Impossible de regarder en haut ou en bas, ta tête est bloquée."),
-    COWARDLY_FIGHTER(CurseCategory.DEPLACEMENT_CAMERA, "Le Combattant Froussard", "Frapper un ennemi te fait paniquer (Vitesse extrême et Cécité)."),
-    PACIFIST_JUMPER(CurseCategory.DEPLACEMENT_CAMERA, "Le Sauteur Pacifique", "Impossible de sauter si tu tiens une arme en main."),
+    ZOOLANDER(
+            CurseCategory.DEPLACEMENT_CAMERA,
+            "Syndrome Zoolander",
+            "Impossible de tourner la caméra vers la gauche."
+    ),
+    FAKE_LAG(
+            CurseCategory.DEPLACEMENT_CAMERA,
+            "Faux Lag",
+            "Toutes les 30 à 60 secondes, un freeze total de 1,5 à 2 secondes te téléporte à ta position de départ."
+    ),
+    COMPULSIVE_SPRINTER(
+            CurseCategory.DEPLACEMENT_CAMERA,
+            "Sprinteur Compulsif",
+            "Impossible de marcher ou de t'accroupir : tu sprintes en permanence."
+    ),
+    SAINT_VITUS_DANCE(
+            CurseCategory.DEPLACEMENT_CAMERA,
+            "Danse de Saint-Guy",
+            "Toutes les 20 à 40 secondes, un saut incontrôlable te secoue."
+    ),
+    PHANTOM_WEIGHT(
+            CurseCategory.DEPLACEMENT_CAMERA,
+            "Poids Fantôme",
+            "Une chute lente automatique s'active dès que tu chutes de 3 blocs ou plus."
+    ),
+    SPIDER_IMPRINT(
+            CurseCategory.DEPLACEMENT_CAMERA,
+            "Empreinte de l'Araignée",
+            "Tu peux grimper aux murs en t'y collant, comme une araignée."
+    ),
 
-    // --- Catégorie 2 : Inventaire & Objets (6) ---
-    DEPENDENT_LEFTY(CurseCategory.INVENTAIRE_OBJETS, "Le Gaucher Dépendant", "Tu ne peux utiliser tes outils qu'en main secondaire."),
-    HOTBAR_ONLY(CurseCategory.INVENTAIRE_OBJETS, "Syndrome Hotbar Only", "Ton inventaire principal rejette les objets (barre d'action uniquement)."),
-    EXCLUSIVITY_CONTRACT(CurseCategory.INVENTAIRE_OBJETS, "Contrat d'Exclusivité", "Interdit d'avoir plusieurs types d'outils différents sur toi."),
-    SLIPPERY_HANDS(CurseCategory.INVENTAIRE_OBJETS, "Les Mains Glissantes", "Ton objet en main glisse et tombe aléatoirement."),
-    SHATTERING_STACK(CurseCategory.INVENTAIRE_OBJETS, "Stack Brisant", "Les piles de 64 objets se divisent toutes seules."),
-    CAPRICIOUS_GOURMET(CurseCategory.INVENTAIRE_OBJETS, "Gourmet Capricieux", "Impossible de manger deux fois de suite la même nourriture."),
+    // --- Catégorie 2 : Inventaire & Objets (5) ---
+    DIRTY_HANDS_ALLERGY(
+            CurseCategory.INVENTAIRE_OBJETS,
+            "Allergie aux Mains Sales",
+            "Terre, sable, gravier ou boue en main sont éjectés instantanément au sol."
+    ),
+    FORCED_VEGETARIAN(
+            CurseCategory.INVENTAIRE_OBJETS,
+            "Végétarisme Forcé",
+            "Manger de la viande t'empoisonne et te donne la nausée."
+    ),
+    HOLED_INVENTORY(
+            CurseCategory.INVENTAIRE_OBJETS,
+            "Inventaire Troué",
+            "Toutes les 30 à 45 secondes, une unité d'un objet de ta hotbar tombe au sol sans bruit."
+    ),
+    IRRESISTIBLE_CRAVING(
+            CurseCategory.INVENTAIRE_OBJETS,
+            "Envie Irrépressible",
+            "Un sucre magique illimité doit être consommé toutes les 60 secondes, sous peine de nausée croissante."
+    ),
+    FORCED_MINIMALISM(
+            CurseCategory.INVENTAIRE_OBJETS,
+            "Minimalisme Forcé",
+            "Ton inventaire est limité à un nombre réduit d'objets ; tout surplus est éjecté au sol."
+    ),
 
-    // --- Catégorie 3 : Minage & Interactions (7) ---
-    DIRTY_HANDS(CurseCategory.MINAGE_INTERACTIONS, "Mains Sales", "Miner de la terre ou du sable te salit la vue (Cécité)."),
-    ALTITUDE(CurseCategory.MINAGE_INTERACTIONS, "Altitude", "Miner en hauteur (Y > 100) te donne le vertige (Nausée)."),
-    SUPERSTITION(CurseCategory.MINAGE_INTERACTIONS, "Superstition", "Casser des blocs précieux te donne de la malchance."),
-    SHY_BUILDER(CurseCategory.MINAGE_INTERACTIONS, "Bâtisseur Timide", "Impossible de poser des blocs si un autre joueur te regarde."),
-    FEARFUL_CRAFTER(CurseCategory.MINAGE_INTERACTIONS, "Artisan Craintif", "L'établi se ferme parfois tout seul quand tu l'utilises."),
-    LOOT_GRAVITY(CurseCategory.MINAGE_INTERACTIONS, "Gravité des Loots", "Les objets minés tombent très lourdement au sol, ramasse-les vite !"),
-    ORE_KARMA(CurseCategory.MINAGE_INTERACTIONS, "Karma des Minerais", "Miner des minerais a une chance d'invoquer un monstre."),
+    // --- Catégorie 3 : Minage & Interactions (2) ---
+    ORE_WHEEL(
+            CurseCategory.MINAGE_INTERACTIONS,
+            "La Roue des Minerais",
+            "Charbon, Fer, Or et Diamant se transforment en le minerai suivant du cycle quand tu les mines."
+    ),
+    INNER_FURNACE(
+            CurseCategory.MINAGE_INTERACTIONS,
+            "Fournaise Intérieure",
+            "Tout minerai brut et toute nourriture crue obtenus sont instantanément cuits ou raffinés."
+    ),
 
     // --- Catégorie 4 : Environnement & Entités (6) ---
-    VEGETARIAN(CurseCategory.ENVIRONNEMENT_ENTITES, "Végétarien", "Manger de la viande t'empoisonne sévèrement."),
-    HYDROPHOBE(CurseCategory.ENVIRONNEMENT_ENTITES, "Hydrophobe", "Toucher l'eau t'inflige des dégâts."),
-    PRECARIOUS_BALANCE(CurseCategory.ENVIRONNEMENT_ENTITES, "Équilibre Précaire", "Les dégâts de chute sont accentués et te cassent les jambes."),
-    EYE_CONTACT(CurseCategory.ENVIRONNEMENT_ENTITES, "Contact Visuel", "Regarder un monstre dans les yeux l'enrage instantanément vers toi."),
-    VAMPIRE(CurseCategory.ENVIRONNEMENT_ENTITES, "Vampire", "Tu brûles au contact de la lumière directe du soleil."),
-    AUDITORY_INSOMNIA(CurseCategory.ENVIRONNEMENT_ENTITES, "Insomnie Auditive", "Impossible de dormir s'il y a des bruits de monstres autour.");
+    CREEPER_SYNDROME(
+            CurseCategory.ENVIRONNEMENT_ENTITES,
+            "Syndrome du Creeper",
+            "Rester immobile 2 secondes déclenche un sifflement puis une explosion."
+    ),
+    WATER_RAGE(
+            CurseCategory.ENVIRONNEMENT_ENTITES,
+            "Rage Hydrique",
+            "Le contact avec l'eau t'empoisonne instantanément."
+    ),
+    VAMPIRE(
+            CurseCategory.ENVIRONNEMENT_ENTITES,
+            "Sang de Vampire",
+            "Tu prends feu à la lumière directe du soleil en extérieur."
+    ),
+    MONSTER_MAGNET(
+            CurseCategory.ENVIRONNEMENT_ENTITES,
+            "Aimant à Monstres",
+            "Tous les monstres proches te ciblent en priorité, en ignorant les autres joueurs."
+    ),
+    GLASS_ANKLES(
+            CurseCategory.ENVIRONNEMENT_ENTITES,
+            "Chevilles de Verre",
+            "Toute chute, même minime, te tue instantanément."
+    ),
+    UNSTABLE_LOTTERY(
+            CurseCategory.ENVIRONNEMENT_ENTITES,
+            "Loterie Instable",
+            "Un nouvel effet de potion aléatoire remplace le précédent toutes les 30 secondes."
+    );
 
     private final CurseCategory category;
     private final String displayName;

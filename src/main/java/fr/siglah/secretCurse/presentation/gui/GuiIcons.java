@@ -22,38 +22,32 @@ public final class GuiIcons {
         CATEGORY_ICONS.put(CurseCategory.MINAGE_INTERACTIONS, Material.IRON_PICKAXE);
         CATEGORY_ICONS.put(CurseCategory.ENVIRONNEMENT_ENTITES, Material.ZOMBIE_HEAD);
 
-        // Cat 1 : Déplacements
+        // Cat 1 : Déplacements & Caméra
         CURSE_ICONS.put(CurseType.ZOOLANDER, Material.COMPASS);
         CURSE_ICONS.put(CurseType.FAKE_LAG, Material.CLOCK);
-        CURSE_ICONS.put(CurseType.ANTI_RABBIT, Material.RABBIT_FOOT);
-        CURSE_ICONS.put(CurseType.STIFF_NECK, Material.CHAIN);
-        CURSE_ICONS.put(CurseType.COWARDLY_FIGHTER, Material.GHAST_TEAR);
-        CURSE_ICONS.put(CurseType.PACIFIST_JUMPER, Material.WHITE_WOOL);
+        CURSE_ICONS.put(CurseType.COMPULSIVE_SPRINTER, Material.RABBIT_FOOT);
+        CURSE_ICONS.put(CurseType.SAINT_VITUS_DANCE, Material.RABBIT_HIDE);
+        CURSE_ICONS.put(CurseType.PHANTOM_WEIGHT, Material.PHANTOM_MEMBRANE);
+        CURSE_ICONS.put(CurseType.SPIDER_IMPRINT, Material.SPIDER_EYE);
 
-        // Cat 2 : Inventaire
-        CURSE_ICONS.put(CurseType.DEPENDENT_LEFTY, Material.SHIELD);
-        CURSE_ICONS.put(CurseType.HOTBAR_ONLY, Material.BARRIER);
-        CURSE_ICONS.put(CurseType.EXCLUSIVITY_CONTRACT, Material.WRITABLE_BOOK);
-        CURSE_ICONS.put(CurseType.SLIPPERY_HANDS, Material.SLIME_BALL);
-        CURSE_ICONS.put(CurseType.SHATTERING_STACK, Material.GLASS_PANE);
-        CURSE_ICONS.put(CurseType.CAPRICIOUS_GOURMET, Material.CAKE);
+        // Cat 2 : Inventaire & Objets
+        CURSE_ICONS.put(CurseType.DIRTY_HANDS_ALLERGY, Material.SPONGE);
+        CURSE_ICONS.put(CurseType.FORCED_VEGETARIAN, Material.CARROT);
+        CURSE_ICONS.put(CurseType.HOLED_INVENTORY, Material.DROPPER);
+        CURSE_ICONS.put(CurseType.IRRESISTIBLE_CRAVING, Material.SUGAR);
+        CURSE_ICONS.put(CurseType.FORCED_MINIMALISM, Material.BUNDLE);
 
         // Cat 3 : Minage & Interactions
-        CURSE_ICONS.put(CurseType.DIRTY_HANDS, Material.DIRT);
-        CURSE_ICONS.put(CurseType.ALTITUDE, Material.SPYGLASS);
-        CURSE_ICONS.put(CurseType.SUPERSTITION, Material.BLACK_CAT_SPAWN_EGG);
-        CURSE_ICONS.put(CurseType.SHY_BUILDER, Material.ENDER_PEARL);
-        CURSE_ICONS.put(CurseType.FEARFUL_CRAFTER, Material.CRAFTING_TABLE);
-        CURSE_ICONS.put(CurseType.LOOT_GRAVITY, Material.ANVIL);
-        CURSE_ICONS.put(CurseType.ORE_KARMA, Material.DIAMOND_ORE);
+        CURSE_ICONS.put(CurseType.ORE_WHEEL, Material.DIAMOND_ORE);
+        CURSE_ICONS.put(CurseType.INNER_FURNACE, Material.FURNACE);
 
-        // Cat 4 : Environnement
-        CURSE_ICONS.put(CurseType.VEGETARIAN, Material.CARROT);
-        CURSE_ICONS.put(CurseType.HYDROPHOBE, Material.WATER_BUCKET);
-        CURSE_ICONS.put(CurseType.PRECARIOUS_BALANCE, Material.LEATHER_BOOTS);
-        CURSE_ICONS.put(CurseType.EYE_CONTACT, Material.SPIDER_EYE);
+        // Cat 4 : Environnement & Entités
+        CURSE_ICONS.put(CurseType.CREEPER_SYNDROME, Material.CREEPER_HEAD);
+        CURSE_ICONS.put(CurseType.WATER_RAGE, Material.WATER_BUCKET);
         CURSE_ICONS.put(CurseType.VAMPIRE, Material.SOUL_CAMPFIRE);
-        CURSE_ICONS.put(CurseType.AUDITORY_INSOMNIA, Material.NOTE_BLOCK);
+        CURSE_ICONS.put(CurseType.MONSTER_MAGNET, Material.MAGMA_CREAM);
+        CURSE_ICONS.put(CurseType.GLASS_ANKLES, Material.LEATHER_BOOTS);
+        CURSE_ICONS.put(CurseType.UNSTABLE_LOTTERY, Material.BREWING_STAND);
 
         DEATH_ICONS.put(DeathCondition.LAVA, Material.LAVA_BUCKET);
         DEATH_ICONS.put(DeathCondition.FALL_DAMAGE, Material.FEATHER);
