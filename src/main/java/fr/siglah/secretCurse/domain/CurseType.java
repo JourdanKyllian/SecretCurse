@@ -63,7 +63,7 @@ public enum CurseType {
     FORCED_MINIMALISM(
             CurseCategory.INVENTAIRE_OBJETS,
             "Minimalisme Forcé",
-            "Ton inventaire est limité à un nombre réduit d'objets ; tout surplus est éjecté au sol."
+            "Ton inventaire principal est verrouillé ; tu ne peux utiliser que ta hotbar."
     ),
 
     // --- Catégorie 3 : Minage & Interactions (2) ---
@@ -82,12 +82,12 @@ public enum CurseType {
     CREEPER_SYNDROME(
             CurseCategory.ENVIRONNEMENT_ENTITES,
             "Syndrome du Creeper",
-            "Rester immobile 2 secondes déclenche un sifflement puis une explosion."
+            "Rester immobile (déplacement ou caméra) pendant 4 secondes déclenche un sifflement puis une explosion fatale."
     ),
     WATER_RAGE(
             CurseCategory.ENVIRONNEMENT_ENTITES,
             "Rage Hydrique",
-            "Le contact avec l'eau t'empoisonne instantanément."
+            "Tout contact avec l'eau, même partiel, te fait suffoquer en continu tant que tu y restes."
     ),
     VAMPIRE(
             CurseCategory.ENVIRONNEMENT_ENTITES,

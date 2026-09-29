@@ -12,7 +12,11 @@ public enum DeathCondition {
     CREEPER_EXPLOSION("Explosion de Creeper", "Mourir dans l'explosion d'un creeper"),
     SKELETON_ARROW("Flèche de Squelette", "Mourir sous les flèches d'un squelette"),
     FIRE("Feu", "Mourir brûlé vif"),
-    STARVATION("Faim", "Mourir de faim");
+    STARVATION("Faim", "Mourir de faim"),
+    CACTUS("Cactus", "Mourir empalé sur un cactus"),
+    ANVIL("Enclume", "Mourir écrasé par une enclume"),
+    STALACTITE("Stalactite", "Mourir empalé par une stalactite"),
+    SUFFOCATION("Suffocation", "Mourir étouffé dans un bloc");
 
     private final String displayName;
     private final String description;

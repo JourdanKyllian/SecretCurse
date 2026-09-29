@@ -4,16 +4,20 @@ import fr.siglah.secretCurse.infrastructure.paper.listener.CurseBehavior;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.UUID;
 
 /**
- * Rage Hydrique : être en contact avec l'eau (partiel ou totalement immergé)
- * inflige un empoisonnement en continu.
- * Utilise une boucle active pour ne pas dépendre des mouvements du joueur.
+ * Rage Hydrique : tout contact avec l'eau (immersion totale OU partielle —
+ * les pieds dans une rivière suffisent) déclenche une suffocation continue
+ * tant que le contact dure.
+ * <p>
+ * Volontairement implémenté en forçant l'air restant à une valeur négative
+ * plutôt qu'en infligeant du Poison : ça déclenche le VRAI mécanisme de
+ * noyade de Minecraft, donc la cause de dégâts est authentiquement
+ * DROWNING — le message de mort dans le chat affiche "s'est noyé" et pas
+ * "a été empoisonné", ce qui était l'objectif.
  */
 public class WaterRageBehavior implements CurseBehavior {
     private final JavaPlugin plugin;
@@ -32,11 +36,17 @@ public class WaterRageBehavior implements CurseBehavior {
             Player p = Bukkit.getPlayer(targetId);
             if (p == null || !p.isOnline() || p.isDead()) return;
 
-            // isInWater() vérifie de manière très fiable si n'importe quelle
-            // partie de la hitbox du joueur (pieds, corps, tête) touche de l'eau
             if (p.isInWater()) {
-                // Applique ou rafraîchit le poison pour 3 secondes (60 ticks)
-                p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 60, 0));
+                // Air négatif maintenu en continu : le tick vanilla applique
+                // les dégâts de noyade à intervalle régulier tant que c'est négatif,
+                // indépendamment du fait que la tête soit réellement immergée ou non.
+                p.setRemainingAir(-20);
+            } else {
+                // Restauration immédiate dès la sortie de l'eau : la contrainte
+                // punit le CONTACT, pas un compteur d'air qui traînerait après coup.
+                if (p.getRemainingAir() < p.getMaximumAir()) {
+                    p.setRemainingAir(p.getMaximumAir());
+                }
             }
         }, 10L, 10L);
     }
@@ -44,10 +54,8 @@ public class WaterRageBehavior implements CurseBehavior {
     @Override
     public void onStop(Player player) {
         if (task != null) task.cancel();
-
-        // Retire le poison restant si on arrête la malédiction alors qu'il est dans l'eau
         if (player != null && player.isOnline()) {
-            player.removePotionEffect(PotionEffectType.POISON);
+            player.setRemainingAir(player.getMaximumAir());
         }
     }
 }

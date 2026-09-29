@@ -1,6 +1,7 @@
 package fr.siglah.secretCurse.domain.port;
 
 import fr.siglah.secretCurse.domain.CurseType;
+import fr.siglah.secretCurse.domain.DeathCondition;
 
 import java.util.UUID;
 
@@ -13,4 +14,8 @@ public interface CurseHandlerPort {
     void sendPrivateBriefing(UUID hiderId, CurseType type);
     void announceSuccess(UUID hiderId, CurseType type);
     void announceFailure(UUID hiderId, CurseType type);
+
+    // Mode "Qui mourra le premier ?" : surveille tous les joueurs en ligne
+    void startDeathRace(DeathCondition condition);
+    void stopDeathRace();
 }

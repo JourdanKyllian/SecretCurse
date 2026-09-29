@@ -2,7 +2,9 @@ package fr.siglah.secretCurse.infrastructure.paper.adapter;
 
 import fr.siglah.secretCurse.domain.port.CurseHandlerPort;
 import fr.siglah.secretCurse.domain.CurseType;
+import fr.siglah.secretCurse.domain.DeathCondition;
 import fr.siglah.secretCurse.infrastructure.paper.listener.CurseBehavior;
+import fr.siglah.secretCurse.infrastructure.paper.listener.deathrace.DeathRaceListener;
 
 import fr.siglah.secretCurse.infrastructure.paper.listener.camera.*;
 import fr.siglah.secretCurse.infrastructure.paper.listener.inventory.*;
@@ -28,6 +30,7 @@ public class PaperCurseHandlerAdapter implements CurseHandlerPort {
 
     private CurseBehavior activeBehavior = null;
     private UUID currentHiderId = null;
+    private DeathRaceListener activeDeathRace = null;
 
     public PaperCurseHandlerAdapter(JavaPlugin plugin) {
         this.plugin = plugin;
@@ -122,6 +125,22 @@ public class PaperCurseHandlerAdapter implements CurseHandlerPort {
         );
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.showTitle(title);
+        }
+    }
+
+    @Override
+    public void startDeathRace(DeathCondition condition) {
+        stopDeathRace();
+        activeDeathRace = new DeathRaceListener(plugin, condition);
+        activeDeathRace.start();
+        plugin.getLogger().info("Death Race démarrée : " + condition.getDisplayName());
+    }
+
+    @Override
+    public void stopDeathRace() {
+        if (activeDeathRace != null) {
+            activeDeathRace.stop();
+            activeDeathRace = null;
         }
     }
 }

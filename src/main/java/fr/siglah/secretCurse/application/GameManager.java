@@ -62,16 +62,16 @@ public class GameManager {
 
     /**
      * Point d'entrée du mode "Qui mourra le premier ?" : appelé une fois que
-     * la roue s'est arrêtée sur une DeathCondition.
-     * <p>
-     * TODO : brancher ici un Listener (ex: EntityDamageEvent / PlayerDeathEvent,
-     * côté infrastructure.paper, sur le même modèle que PaperCurseHandlerAdapter)
-     * qui détecte quel joueur meurt le premier de la façon désignée, et déclare
-     * le vainqueur. Pour l'instant, ce point d'entrée est fonctionnel mais
-     * n'active pas encore la détection en jeu.
+     * la roue s'est arrêtée sur une DeathCondition. Délègue à l'infrastructure
+     * la surveillance de tous les joueurs en ligne jusqu'à ce que l'un d'eux
+     * meure de la façon désignée.
      */
     public void startDeathRaceChallenge(DeathCondition condition) {
-        // Volontairement minimal pour le moment (cf. TODO ci-dessus).
+        curseHandler.startDeathRace(condition);
+    }
+
+    public void stopDeathRaceChallenge() {
+        curseHandler.stopDeathRace();
     }
 
     private CurseType pickRandomCurse() {

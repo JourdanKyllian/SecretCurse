@@ -57,6 +57,10 @@ public final class GuiIcons {
         DEATH_ICONS.put(DeathCondition.SKELETON_ARROW, Material.ARROW);
         DEATH_ICONS.put(DeathCondition.FIRE, Material.FLINT_AND_STEEL);
         DEATH_ICONS.put(DeathCondition.STARVATION, Material.ROTTEN_FLESH);
+        DEATH_ICONS.put(DeathCondition.CACTUS, Material.CACTUS);
+        DEATH_ICONS.put(DeathCondition.ANVIL, Material.ANVIL);
+        DEATH_ICONS.put(DeathCondition.STALACTITE, Material.POINTED_DRIPSTONE);
+        DEATH_ICONS.put(DeathCondition.SUFFOCATION, Material.SAND);
     }
 
     public static Material iconFor(CurseCategory category) {
